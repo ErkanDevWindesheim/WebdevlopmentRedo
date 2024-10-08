@@ -50,3 +50,10 @@ nav {
 .W {
     font-size: 5rem;
 }
+
+form {
+    display: flex;
+    flex-direction: row;
+
+    padding: 2rem;
+}

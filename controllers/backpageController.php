@@ -5,7 +5,7 @@ class backpageController
     public function backPage(): void
     {
         $title = "backpage";
-        $contentText = "
+        $ContentHTML = "
         <p class='title'><strong class='W'>W</strong>strong</p>
         <div class='papier'>
         <h2>Wil jij deel deel uitmaken van het Student<br>Windesheim Ambassadeurs Team?<br>(SWAT Team)<br></h2>
@@ -20,6 +20,6 @@ class backpageController
         </div>
         ";
 
-        include(__DIR__ . "/../views/frontpage.view.php");
+        include(__DIR__ . "/../views/formpage.view.php");
     }
 }

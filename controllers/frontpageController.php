@@ -6,7 +6,7 @@ class frontpageController
     public function frontPage(): void
     {
         $title = "front page";
-        $contentText = "
+        $ContentHTML = "
         <p class='title'><strong class='W'>W</strong>il jij een leuke bijbaan?</p>
         <div class='papier'>
         <h2>Wil jij deel deel uitmaken van het Student<br>Windesheim Ambassadeurs Team?<br>(SWAT Team)<br></h2>
