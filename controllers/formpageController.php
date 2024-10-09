@@ -1,59 +1,75 @@
 <?php
 
+/*--------------------------------------------------//
+//                                                  //
+//                     Controller:                  //
+//                  #formpageController             //
+//            Deze class is verantwoordelijk voor   //
+//             alle actions, bijvoorbeeld save()    //
+//                 functie die vervolgens           //
+//                  De model aanroept om            //
+//              een query sturen naar de database   //
+//                                                  //
+//--------------------------------------------------*/
+
 class formpageController
 {
     public function index(): void
     {   
-        // pak alle posts & comments: display in table.
-        require_once(__DIR__ . "/../models/postModel.php");
-        $postModel = new postModel();
-        $posts = $postModel->showAllPosts();
+        try {
+            // pak alle posts & comments: display in table.
+            require_once(__DIR__ . "/../models/postModel.php");
+            $postModel = new postModel();
+            $posts = $postModel->showAllPosts();
 
-        require_once(__DIR__ . "/../models/commentModel.php");
-        $postModel = new commentModel();
-        $comments = $postModel->showAllComments();
+            require_once(__DIR__ . "/../models/commentModel.php");
+            $postModel = new commentModel();
+            $comments = $postModel->showAllComments();
 
         
 
-        $ContentHTML = "
-        <section class=\"form1\">
-            <form action=\"/submit-form\" method=\"post\">
-                <h1>Create post</h1>
-                <p>
-                    <label>Title</label><br>
-                    <input type=\"text\" name=\"title\" required>
-                </p>
-                <p>
-                    <label>Content</label><br>
-                    <textarea name=\"content\" required></textarea>
-                </p>
-                <p>
-                    <label>Author</label><br>
-                    <input type=\"text\" name=\"author\" required>
-                </p>
-                <button type=\"submit\">Submit</button>
-            </form>
-        </section>
-        <section class=\"form2\">
-            <form action=\"/commentAdd\" method=\"post\">
-                <h1>Create Comment</h1>
-                <p>
-                    <label>Post Id</label><br>
-                    <input type=\"text\" name=\"PostID\" required>
-                </p>
-                <p>
-                    <label>Bericht</label><br>
-                    <textarea name=\"bericht\" required></textarea>
-                </p>
-                <p>
-                    <label>Author</label><br>
-                    <input type=\"text\" name=\"author\" required>
-                </p>
-                <button type=\"submit\">Submit</button>
-            </form>
-        </section>
-        ";
-        include(__DIR__ . "/../views/formpage.view.php");
+            $ContentHTML = "
+            <section class=\"form1\">
+                <form action=\"/submit-form\" method=\"post\">
+                    <h1>Create post</h1>
+                    <p>
+                        <label>Title</label><br>
+                        <input type=\"text\" name=\"title\" required>
+                    </p>
+                    <p>
+                        <label>Content</label><br>
+                        <textarea name=\"content\" required></textarea>
+                    </p>
+                    <p>
+                        <label>Author</label><br>
+                        <input type=\"text\" name=\"author\" required>
+                    </p>
+                    <button type=\"submit\">Submit</button>
+                </form>
+            </section>
+            <section class=\"form2\">
+                <form action=\"/commentAdd\" method=\"post\">
+                    <h1>Create Comment</h1>
+                    <p>
+                        <label>Post Id</label><br>
+                        <input type=\"text\" name=\"PostID\" required>
+                    </p>
+                    <p>
+                        <label>Bericht</label><br>
+                        <textarea name=\"bericht\" required></textarea>
+                    </p>
+                    <p>
+                        <label>Author</label><br>
+                        <input type=\"text\" name=\"author\" required>
+                    </p>
+                    <button type=\"submit\">Submit</button>
+                </form>
+            </section>
+            ";
+            include(__DIR__ . "/../views/formpage.view.php");
+        } catch (Exception $e) {
+            echo $e;
+        }
     }
 
     // Create post

@@ -1,7 +1,18 @@
 <?php
 
+/*--------------------------------------------------//
+//                                                  //
+//                     Model:                       //
+//                  #commentModel                   //
+//            Deze class is verantwoordelijk        //
+//          voor querys te voeren voor de juist     //
+//              action die wilt uitvoeren           //
+//                                                  //
+//--------------------------------------------------*/
+
 class commentModel {
 
+    // $Pdo is waar de database connectie opslaan
     private $pdo;
 
     public function __construct() {
@@ -11,19 +22,25 @@ class commentModel {
         $this->pdo = $db->getConnection();
     }
 
+    // Maak een comment
     public function CreateComment(array $data): void {
         // prepare statement
-        $sql = "INSERT INTO Comments (PostID, bericht, author) VALUES (:PostID, :bericht, :author)";
-        $stmt = $this->pdo->prepare($sql);
+        try {
+            $sql = "INSERT INTO Comments (PostID, bericht, author) VALUES (:PostID, :bericht, :author)";
+            $stmt = $this->pdo->prepare($sql);
 
-        $stmt->execute([
+            $stmt->execute([
             ':PostID' => $data['PostID'],
             ':bericht' => $data['bericht'],
             ':author' => $data['author']
-        ]);
+            ]);
+        } catch (PDOException $e) {
+            echo $e;
+        }
 
     }
 
+    // fucntie om alle Comments te laten zien
     public function showAllComments(): array {
         // Execute de query
         $COMMENTSdata = $this->pdo->query('SELECT commentid, PostID, bericht FROM comments');

@@ -1,5 +1,18 @@
 <?php
 
+
+/*--------------------------------------------------//
+//                                                  //
+//                     Controller:                  //
+//                  #backpageController             //
+//            Deze class is verantwoordelijk voor   //
+//             alle actions, bijvoorbeeld save()    //
+//                 functie die vervolgens           //
+//                  De model aanroept om            //
+//              een query sturen naar de database   //
+//                                                  //
+//--------------------------------------------------*/
+
 class backpageController 
 {
     public function backPage(): void
