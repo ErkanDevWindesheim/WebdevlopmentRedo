@@ -19,11 +19,16 @@ CREATE TABLE Posts (
 );
 
 
-INSERT INTO posts (title, content, author)
-VALUES ('Dedddddddddddddddjn goed  ccccc', 'bla dddddddddddddddd', 'dddddd');
+-- INSERT INTO posts (title, content, author)
+-- VALUES ('Dedddddddddddddddjn goed  ccccc', 'bla dddddddddddddddd', 'dddddd');
 
 CREATE TABLE Comments (
     commentid INT NOT NULL AUTO_INCREMENT,
+    PostID int,
     bericht TEXT,
-    author VAR_CHAR(32),
-)
+    author VARCHAR(32),
+    created_at DATETIME DEFAULT current_timestamp,
+    updated_at DATETIME DEFAULT CURRENT_TIMESTAMP() ON UPDATE CURRENT_TIMESTAMP(),
+    PRIMARY KEY (commentid),
+    FOREIGN KEY (PostID) REFERENCES Posts(PostID)
+);

@@ -28,6 +28,12 @@ switch( $url) {
         $formPageController = new formpageController();
         $formPageController->create();
         break;
+    case '/commentAdd':
+        require_once(__DIR__ . '/controllers/formpageController.php');
+        $formPageController = new formpageController();
+        $formPageController->Addcomment();
+        break;
+    
     default:
         echo "404 - Page not found";
         break;

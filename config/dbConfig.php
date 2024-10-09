@@ -10,7 +10,7 @@ class dbConfig {
 
     public function __construct() {
         try {
-            $this->dbh = new PDO("mysql:host={$this->serverNaam};dbname={$this->dbNaam}", $this->userNaam, $this->password);
+            $this->dbh = new PDO("mysql:host={$this->serverNaam};dbname={$this->dbNaam}", username: $this->userNaam, password: $this->password);
             $this->dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         } catch (PDOException $e) {
             die("Database connection failed: " . $e->getMessage());

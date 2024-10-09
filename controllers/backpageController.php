@@ -20,6 +20,6 @@ class backpageController
         </div>
         ";
 
-        include(__DIR__ . "/../views/formpage.view.php");
+        include(__DIR__ . "/../views/backpage.view.php");
     }
 }

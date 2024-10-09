@@ -11,12 +11,23 @@ class postModel {
         $this->pdo = $db->getConnection();  // Pak de pdo connectie
     }
 
+    public function showAllPosts(): array|bool {
+        // Execute de query
+        $POSTdata = $this->pdo->query('SELECT postid, title FROM Posts');
+        
+        // Fetch alle posts als een associative array
+        $posts = $POSTdata->fetchAll(PDO::FETCH_ASSOC);
+    
+        // Return de data
+        return $posts;
+    }
+
     public function create(array $data): void {
         // Prepare the SQL statement to avoid SQL injection
         $sql = "INSERT INTO Posts (title, content, author, created_at) VALUES (:title, :content, :author, NOW())";
 
         // Prepare the statement
-        $stmt = $this->pdo->prepare($sql);
+        $stmt = $this->pdo->prepare(query: $sql);
 
         // GO and fire de data naar de database
         $stmt->execute(params: [
